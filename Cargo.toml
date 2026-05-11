@@ -1,0 +1,15 @@
+cargo-features = ["panic-immediate-abort"]
+
+[package]
+name = "mobile-hand-warmer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+num_cpus = "1.17.0"
+
+[profile.release]
+lto = true
+strip = true
+panic = "immediate-abort"
+opt-level = "z"
