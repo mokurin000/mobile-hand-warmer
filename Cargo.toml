@@ -4,6 +4,8 @@ cargo-features = ["panic-immediate-abort"]
 name = "mobile-hand-warmer"
 version = "0.1.0"
 edition = "2024"
+authors = ["mokurin000"]
+license = "MIT"
 
 [dependencies]
 num_cpus = "1.17.0"
