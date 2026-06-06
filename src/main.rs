@@ -26,8 +26,8 @@ fn main() {
     #[cfg(feature = "sha")]
     let payload = if std::env::args().find(|arg| arg == "--sha").is_some() {
         || {
-            // 8 MiB per thread
-            let mut buf = Aligned::<_>([0u8; 8 * 1024 * 1024]);
+            // 256 KiB per thread
+            let mut buf = Aligned::<_>([0u8; 256 * 1024]);
             DefaultRandomSource.fill_bytes(&mut buf.0);
 
             loop {
