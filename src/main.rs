@@ -1,9 +1,15 @@
 #![feature(random)]
 
+use std::random::{DefaultRandomSource, RandomSource};
+
+#[repr(align(128))]
+struct Aligned<T>(T);
+
 fn main() {
     std::iter::once(|| {
+        let mut buf = Aligned::<_>([0u8; 128]);
         loop {
-            std::random::random::<u64>(..);
+            DefaultRandomSource.fill_bytes(&mut buf.0);
         }
     })
     .cycle()
