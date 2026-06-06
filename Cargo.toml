@@ -9,6 +9,12 @@ license = "MIT"
 
 [dependencies]
 num_cpus = "1.17.0"
+ring = { version = "0.17.14", default-features = false, features = [
+    "dev_urandom_fallback",
+], optional = true }
+
+[features]
+sha = ["dep:ring"]
 
 [profile.release]
 lto = true
