@@ -25,8 +25,6 @@ fn main() {
 
     #[cfg(feature = "sha")]
     let payload = if std::env::args().find(|arg| arg == "--sha").is_some() {
-        payload
-    } else {
         || {
             // 8 MiB per thread
             let mut buf = Aligned::<_>([0u8; 8 * 1024 * 1024]);
@@ -36,6 +34,8 @@ fn main() {
                 std::hint::black_box(ring::digest::digest(&ring::digest::SHA512, &buf.0));
             }
         }
+    } else {
+        payload
     };
 
     payload_per_thread(payload);
